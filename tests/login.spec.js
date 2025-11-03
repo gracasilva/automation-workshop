@@ -3,7 +3,7 @@ import test, { expect } from "@playwright/test";
 
 test('Login sucessful', async ({page})=>{
 
-    await page.goto('https://playground-drab-six.vercel.app/login');
+    await page.goto('/login');
     await page.getByRole('textbox', {name: 'Type your username'}).fill('test');
     await page.getByRole('textbox', {name: 'Type your password'}).fill('password123');
     await page.getByRole('button', { name: 'Login' }).click();
@@ -13,7 +13,7 @@ test('Login sucessful', async ({page})=>{
 
 test('Blocked account', async ({page})=>{
 
-    await page.goto('https://playground-drab-six.vercel.app/login');
+    await page.goto('/login');
     await page.getByRole('textbox', {name: 'Type your username'}).fill('testblock');
     await page.getByRole('textbox', {name: 'Type your password'}).fill('password123');
     await page.getByRole('button', { name: 'Login' }).click();
@@ -23,7 +23,7 @@ test('Blocked account', async ({page})=>{
 
 test('Invalid user', async ({page})=>{
 
-    await page.goto('https://playground-drab-six.vercel.app/login');
+    await page.goto('/login');
     await page.getByRole('textbox', {name: 'Type your username'}).fill('graca');
     await page.getByRole('textbox', {name: 'Type your password'}).fill('password123');
     await page.getByRole('button', { name: 'Login' }).click();
@@ -33,7 +33,7 @@ test('Invalid user', async ({page})=>{
 
 test('Wrong password', async ({page})=>{
 
-    await page.goto('https://playground-drab-six.vercel.app/login');
+    await page.goto('/login');
     await page.getByRole('textbox', {name: 'Type your username'}).fill('test');
     await page.getByRole('textbox', {name: 'Type your password'}).fill('password125');
     await page.getByRole('button', { name: 'Login' }).click();
@@ -43,7 +43,7 @@ test('Wrong password', async ({page})=>{
 
 test('Temporary block', async ({page})=>{
 
-    await page.goto('https://playground-drab-six.vercel.app/login');
+    await page.goto('/login');
     await page.getByRole('textbox', {name: 'Type your username'}).fill('test');
     await page.getByRole('textbox', {name: 'Type your password'}).fill('password125');
     await page.getByRole('button', { name: 'Login' }).click({ clickCount: 3 });
@@ -53,7 +53,7 @@ test('Temporary block', async ({page})=>{
 
 test('Empty fields', async ({page})=>{
 
-    await page.goto('https://playground-drab-six.vercel.app/login');
+    await page.goto('/login');
     await page.getByRole('button', { name: 'Login' }).click();
 
     await expect(page.getByPlaceholder('Type your username')).toBeVisible();
