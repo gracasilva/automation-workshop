@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test("test", async ({ page }) => {
-  await page.goto("https://playground-drab-six.vercel.app/form");
+  await page.goto("/form");
 
   await test.step("Fill in form", async () => {
     await page.getByRole("textbox", { name: "Name *" }).fill("teste1");
@@ -66,7 +66,7 @@ const users = [
 
 for (const user of users) {
   test(`Create user: ${user.name}`, async ({ page }) => {
-    await page.goto("https://playground-drab-six.vercel.app/form");
+    await page.goto("/form");
 
     await test.step("Fill in form", async () => {
       await page.getByRole("textbox", { name: "Name *" }).fill(user.name);
