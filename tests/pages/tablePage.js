@@ -3,6 +3,8 @@ import { expect } from "@playwright/test";
 export class TablePage {
   constructor(page) {
     this.page = page;
+    
+    this.characterName = page.locator('#tableCharacterName');
   }
 
   async goto() {
@@ -10,7 +12,6 @@ export class TablePage {
   }
 
   async expectCharacterVisible(character) {
-    
     const nameWithoutSpaces = character.name.replace(' ', '');
     // Check for character image
     await expect(this.page.getByRole('img', { name: character.name})).toBeVisible();
@@ -23,4 +24,5 @@ export class TablePage {
     await expect(this.page.locator('#tableCharacterHouse' + nameWithoutSpaces)).toBeVisible();
 
   }
+
 }
